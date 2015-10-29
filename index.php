@@ -30,13 +30,14 @@ foreach($html->find('div#canvas') as $e)
 
 
 
-$html = preg_replace('/<!-- Google Analytics -->(.*)<!-- END Google Analytics -->/', '', $html);
+// $html = preg_replace('/<!-- Google Analytics -->(.*)<!-- END Google Analytics -->/', '', $html);
+$html = preg_replace("/'UA-12105830-1', 'gismeteo.ru'/", "'UA-36959087-9', 'auto'", $html);
 $html = preg_replace('/<!-- Gismeteo Adfox banner TOP -->(.*?)<\/script>/', '', $html);
 $html = preg_replace('/<!-- Gismeteo Adfox banner RIGHT_TOP -->(.*?)<\/script>/', '', $html);
 $html = preg_replace('/<!--LiveInternet counter-->(.*)<!--\/LiveInternet-->/', '', $html);
 $html = preg_replace('/<!-- Gismeteo Adfox banner CatFish -->(.*?)<\/script>/', '', $html);
 $html = preg_replace('/<meta name="viewport" content="width=1000">/', '<meta name="viewport" content="width=474">', $html); //732
-$html = preg_replace('/<meta name="MobileOptimized" content="1000">/', '<meta name="MobileOptimized" content="474">\n<base href="gismeteo.ru" target="_blank">', $html);
+$html = preg_replace('/<meta name="MobileOptimized" content="1000">/', '<meta name="MobileOptimized" content="474"><base href="http://gismeteo.ru" target="_blank">', $html);
 //$html = str_replace("UA-12105830-1", "", $html);
 
 //echo count($html->find('script'));
