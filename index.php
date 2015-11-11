@@ -2,8 +2,17 @@
 
 include('simple_html_dom.php');
 
+$city = checkCityNumber($_GET["c"], checkCityNumber($_GET["city"], checkCityNumber($_GET["town"], "4618")));
 
-$html = file_get_html('http://www.gismeteo.ru/city/weekly/4618/');
+function checkCityNumber($id, $ifFalse) {
+	if(isset($id) && !empty($id) && (int) $id > 0) 
+	{
+		return $id;
+	}
+	return $ifFalse;
+}
+
+$html = file_get_html('http://www.gismeteo.ru/city/weekly/'.$city.'/');
 
 function findAndRemove($value) {
 	// Find all <div> with the id attribute
@@ -38,7 +47,7 @@ $html = preg_replace('/<!--LiveInternet counter-->(.*)<!--\/LiveInternet-->/', '
 $html = preg_replace('/<!-- Gismeteo Adfox banner CatFish -->(.*?)<\/script>/', '', $html);
 $html = preg_replace('/<meta name="viewport" content="width=1000">/', '<meta name="viewport" content="width=474">', $html); //732
 $html = preg_replace('/<meta name="MobileOptimized" content="1000">/', '<meta name="MobileOptimized" content="474"><base href="http://gismeteo.ru" target="_blank">', $html);
-//$html = str_replace("UA-12105830-1", "", $html);
+$html = preg_replace('/href="#"/', 'href="javascript:void(0);"', $html);
 
 //echo count($html->find('script'));
 
@@ -69,6 +78,8 @@ unset($html);
 	setTimeout(function(){
 		document.querySelector('#page.narrow #canvas').style.width = "100%";
 		document.querySelector('#canvas').style.width = "100%";
+		document.querySelector('#canvas').style['min-width'] = "100%";
+		document.querySelector('#canvas').style['max-width'] = "100%";
 		document.querySelector('#content').style.width = "100%";
 		document.querySelector('#weather').style.float = "none";
 		document.querySelector('#weather-weekly').style.float = "none";
