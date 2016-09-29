@@ -22,7 +22,7 @@ function findAndRemove($value) {
 }
 
 
-$arr=array('#header', '#cright', '#rbc', '.cright', '#footer', '#link_block', '.hslice', '#ad-lb', '#informer', '#ad-left', '#adfox_catfish', '#intown', '#graph', "#top_wide", ".adv_ico");
+$arr=array('#header', '#cright', '#rbc', '.cright', '#footer', '#link_block', '.hslice', '#ad-lb', '#informer', '#ad-left', '#adfox_catfish', '#intown', '#graph', "#top_wide", ".adv_ico", "#weather-lb", "#weather-left");
 $arr2=array('weather', 'weather-weekly', 'graph', 'astronomy');
 
 //, '#iyp__topcontrol_div', '#inpage__browser_size_tooltip', '#iyp__browser_size_viz', '#iyp__topcontrol_spacer'
